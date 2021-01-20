@@ -5,8 +5,8 @@ describe('Test_Case_1', function(){
 
         browser.get('http://www.way2automation.com/angularjs-protractor/calc/');
 
-        CalculatorPage.enterFirstNumber('3')
-        CalculatorPage.enterSecondNumber('5');
+        CalculatorPage.enterFirstNumber('6')
+        CalculatorPage.enterSecondNumber('2');
         CalculatorPage.clickSubmitButton();
         CalculatorPage.verifyOutput('8')
     });
