@@ -1,4 +1,3 @@
-
 describe('Test_Case_1', function(){
     var CalculatorPage = require('../Tests/CalculatorPage.js')
     it('Test_Case_1', function(){

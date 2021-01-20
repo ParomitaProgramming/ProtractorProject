@@ -1,9 +1,9 @@
-let CalculatorPage = function(){
+var CalculatorPage = function(){
 
-    let firstNumber = element(by.model('first'));
-    let secondNumber = element(by.model('second'));
-    let submitButton = element(by.id('gobutton'));
-    let outputText = element(by.xpath("//*[@class='ng-binding']"));
+    var firstNumber = element(by.model('first'));
+    var secondNumber = element(by.model('second'));
+    var submitButton = element(by.id('gobutton'));
+    var outputText = element(by.xpath("//*[@class='ng-binding']"));
 
     this.enterFirstNumber = function(firstNo){
         firstNumber.sendKeys(firstNo);
