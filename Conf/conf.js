@@ -38,6 +38,28 @@ exports.config = {
       savePath: './',
       filePrefix: 'xmlresults'
     }));
+
+    var fs = require('C:/Users/User/node_modules/protractor-html-reporter-2/node_modules/fs-extra');
+
+    fs.emptyDir('Screenshots/', function (err) {
+      console.log(err);
+    });
+
+    jasmine.getEnv().addReporter({
+      specDone: function (result) {
+        if (result.status == 'failed') {
+          browser.getCapabilities().then(function (caps) {
+            var browserName = caps.get('browserName');
+
+            browser.takeScreenshot().then(function (png) {
+              var stream = fs.createWriteStream('Screenshots/' + browserName + '-' + result.fullName + '.png');
+              stream.write(new Buffer(png, 'base64'));
+              stream.end();
+            });
+          });
+        }
+      }
+    });
   },
 
   //Protractor HTML Report
@@ -56,7 +78,7 @@ exports.config = {
         reportTitle: 'Protractor Test Execution Report',
         outputPath: './',
         outputFilename: 'ProtractorTestReport',
-        screenshotPath: './screenshots',
+        screenshotPath: 'Screenshots',
         testBrowser: browserName,
         browserVersion: browserVersion,
         modifiedSuiteName: false,
